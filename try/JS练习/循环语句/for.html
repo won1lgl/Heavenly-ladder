@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            border: 1px red solid;
+            float: left;
+            margin: 10px;
+        }
+        header{
+            padding: 0 300px
+        }
+        header::after{
+            content: '';
+            display: table;
+            clear: both;
+        }
+    </style>
+    <script>
+        window.onload=function () {
+            var a=document.getElementsByTagName('div');
+            var b=document.getElementById('btn');
+            b.onclick=function () {
+                for (var i = 0; i < a.length; i++) {
+                    a[i].style.backgroundColor = 'red'
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<header>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</header>
+<input type="button" value=" 变" id="btn">
+</body>
+</html>

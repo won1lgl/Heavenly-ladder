@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="explore.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+<script>
+    window.onload=function () {
+        var page=1;
+        var x1=document.getElementById('back');
+        var x2=document.getElementById('btn1');
+        var x0=new XMLHttpRequest();
+        var pgp=document.getElementById('pageup');
+        var pgd=document.getElementById('pagedown');
+        x0.open('post','URL',true);
+        x0.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        x0.send("TotalPage="+20+"&page="+page);
+        x1.onclick=function () {
+            window.location.href="cms.html";
+        };
+        x2.onclick=function () {
+            window.location.href="login.html";
+        };
+
+        pgd.onclick=function () {
+            page=page+1;
+            var a0=new XMLHttpRequest();
+            a0.open('post','URL',true);
+            a0.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            a0.send("page="+page);
+        };
+
+        pgp.onclick=function (){
+            if(page==1){
+                alert('这是第一页')
+            }
+            else {
+                page=page-1;
+                var b0=new XMLHttpRequest();
+                b0.open('post','URL',true);
+                b0.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                b0.send("page="+page)
+            }
+        }
+    }
+</script>
+<body>
+<div class="header" id="header">
+    <span class="back" id="back"><img src="back.png"> </span>
+    <h1>Hearfresh CMS</h1>
+    <span class="button" id="btn1">退出登录</span>
+</div>
+<div class="column" >
+    <span class="title" >这些耳机，让你身临其境</span>
+    <span class="writer" >by邵励治</span>
+    <span class="date" >2018年7月16日</span>
+</div>
+<div class="column" >
+    <span class="title" >这些耳机，让你身临其境</span>
+    <span class="writer" >by邵励治</span>
+    <span class="date" >2018年7月16日</span>
+</div>
+<div class="column" >
+    <span class="title" >这些耳机，让你身临其境</span>
+    <span class="writer" >by邵励治</span>
+    <span class="date" >2018年7月16日</span>
+</div>
+<div class="column" >
+    <span class="title" >这些耳机，让你身临其境</span>
+    <span class="writer" >by邵励治</span>
+    <span class="date" >2018年7月16日</span>
+</div>
+<div class="column" >
+    <span class="title" >这些耳机，让你身临其境</span>
+    <span class="writer" >by邵励治</span>
+    <span class="date" >2018年7月16日</span>
+</div>
+<div class="column" >
+    <span class="title" >这些耳机，让你身临其境</span>
+    <span class="writer" >by邵励治</span>
+    <span class="date" >2018年7月16日</span>
+</div>
+<div class="column" >
+    <span class="title" >这些耳机，让你身临其境</span>
+    <span class="writer" >by邵励治</span>
+    <span class="date" >2018年7月16日</span>
+</div>
+<div class="column" >
+    <span class="title" >这些耳机，让你身临其境</span>
+    <span class="writer" >by邵励治</span>
+    <span class="date" >2018年7月16日</span>
+</div>
+<div class="column" >
+    <span class="title" >这些耳机，让你身临其境</span>
+    <span class="writer" >by邵励治</span>
+    <span class="date" >2018年7月16日</span>
+</div>
+<div class="column" >
+    <span class="title" >这些耳机，让你身临其境</span>
+    <span class="writer" >by邵励治</span>
+    <span class="date" >2018年7月16日</span>
+</div>
+<div class="column" >
+    <span class="title" >这些耳机，让你身临其境</span>
+    <span class="writer" >by邵励治</span>
+    <span class="date" >2018年7月16日</span>
+</div>
+<div class="column" >
+    <span class="title" >这些耳机，让你身临其境</span>
+    <span class="writer" >by邵励治</span>
+    <span class="date" >2018年7月16日</span>
+</div>
+<div class="column" >
+    <span class="title" >这些耳机，让你身临其境</span>
+    <span class="writer" >by邵励治</span>
+    <span class="date" >2018年7月16日</span>
+</div>
+<div class="column" >
+    <span class="title" >这些耳机，让你身临其境</span>
+    <span class="writer" >by邵励治</span>
+    <span class="date" >2018年7月16日</span>
+</div>
+<div class="column" >
+    <span class="title" >这些耳机，让你身临其境</span>
+    <span class="writer" >by邵励治</span>
+    <span class="date" >2018年7月16日</span>
+</div>
+<div class="column" >
+    <span class="title" >这些耳机，让你身临其境</span>
+    <span class="writer" >by邵励治</span>
+    <span class="date" >2018年7月16日</span>
+</div>
+<div class="column" >
+    <span class="title" >这些耳机，让你身临其境</span>
+    <span class="writer" >by邵励治</span>
+    <span class="date" >2018年7月16日</span>
+</div>
+<div class="column" >
+    <span class="title" >这些耳机，让你身临其境</span>
+    <span class="writer" >by邵励治</span>
+    <span class="date" >2018年7月16日</span>
+</div>
+<div class="column" >
+    <span class="title" >这些耳机，让你身临其境</span>
+    <span class="writer" >by邵励治</span>
+    <span class="date" >2018年7月16日</span>
+</div>
+<div class="column" >
+    <span class="title" >这些耳机，让你身临其境</span>
+    <span class="writer" >by邵励治</span>
+    <span class="date" >2018年7月16日</span>
+</div>
+<div class="column" >
+    <span class="title" >这些耳机，让你身临其境</span>
+    <span class="writer" >by邵励治</span>
+    <span class="date" >2018年7月16日</span>
+</div>
+<div class="footer">
+    <div class="pageup" id="pageup">上一页</div>
+    <div class="pagedown" id="pagedown">下一页</div>
+</div>
+</body>
+</html>

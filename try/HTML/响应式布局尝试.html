@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>响应式布局</title>
+    <link rel="stylesheet" href="normalize.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box
+        }
+        .box {
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .col {float: left}
+        .l1 {width: 8.33%}
+        .l2 {width: 16.66%}
+        .l3 {width: 25%}
+        .l4 {width: 33.33%}
+        .l5 {width: 41.66%}
+        .l6 {width: 50%}
+        .l7 {width: 58.33%}
+        .l8 {width: 66.66%}
+        .l9 {width: 75%}
+        .l10 {width:83.33%}
+        .l11 {width: 91.66%}
+        .l12 {width: 100%}
+        @media only screen and (max-width: 600px) {
+            .s1 {
+                width: 8.33%
+            }
+
+            .s2 {
+                width: 16.66%
+            }
+
+            .s3 {
+                width: 25%
+            }
+
+            .s4 {
+                width: 33.33%
+            }
+
+            .s5 {
+                width: 41.66%
+            }
+
+            .s6 {
+                width: 50%
+            }
+
+            .s7 {
+                width: 58.33%
+            }
+
+            .s8 {
+                width: 66.66%
+            }
+
+            .s9 {
+                width: 75%
+            }
+
+            .s10 {
+                width: 83.33%
+            }
+
+            .s11 {
+                width: 91.66%
+            }
+
+            .s12 {
+                width: 100%
+            }
+        }
+            @media only screen and (min-width: 601px) and (max-width: 768px) {
+                .m1 {
+                    width: 8.33%
+                }
+
+                .m2 {
+                    width: 16.66%
+                }
+
+                .m3 {
+                    width: 25%
+                }
+
+                .m4 {
+                    width: 33.33%
+                }
+
+                .m5 {
+                    width: 41.66%
+                }
+
+                .m6 {
+                    width: 50%
+                }
+
+                .m7 {
+                    width: 58.33%
+                }
+
+                .m8 {
+                    width: 66.66%
+                }
+
+                .m9 {
+                    width: 75%
+                }
+
+                .m10 {
+                    width: 83.33%
+                }
+
+                .m11 {
+                    width: 91.66%
+                }
+
+                .m12 {
+                    width: 100%
+                }
+            }
+        .css1 {
+        background-color: yellow;
+        }
+        .css2 {
+            background-color: blue;
+        }
+        .css3 {
+            background-color: pink;
+        }
+        .css4 {
+            background-color: red;
+        }
+        .col {float: left}
+        .l1 {width: 8.33%}
+        .l2 {width: 16.66%}
+        .l3 {width: 25%}
+        .l4 {width: 33.33%}
+        .l5 {width: 41.66%}
+        .l6 {width: 50%}
+        .l7 {width: 58.33%}
+        .l8 {width: 66.66%}
+        .l9 {width: 75%}
+        .l10 {width:83.33%}
+        .l11 {width: 91.66%}
+        .l12 {width: 100%}
+        @media only screen and (max-width: 600px) {
+            .s1 {
+                width: 8.33%
+            }
+
+            .s2 {
+                width: 16.66%
+            }
+
+            .s3 {
+                width: 25%
+            }
+
+            .s4 {
+                width: 33.33%
+            }
+
+            .s5 {
+                width: 41.66%
+            }
+
+            .s6 {
+                width: 50%
+            }
+
+            .s7 {
+                width: 58.33%
+            }
+
+            .s8 {
+                width: 66.66%
+            }
+
+            .s9 {
+                width: 75%
+            }
+
+            .s10 {
+                width: 83.33%
+            }
+
+            .s11 {
+                width: 91.66%
+            }
+
+            .s12 {
+                width: 100%
+            }
+        }
+
+        .row::after,.row::before {
+            content: "";
+            clear: both;
+            display: table
+        }
+        h1 {text-align: center}
+
+    </style>
+
+</head>
+<body>
+<h1>响应式布局</h1>
+<div class="row">
+    <div class="col l3 s12 m6">
+    <div class="box css1 ">
+1
+    </div>
+</div>
+    <div class="col l3 s12 m6">
+    <div class="box css2 ">
+2
+    </div>
+    </div>
+    <div class="col l3 s12 m6">
+    <div class="box css3 ">
+3
+    </div>
+    </div>
+    <div class="col l3 s12 m6">
+    <div class="box css4 ">
+4
+    </div>
+    </div>
+</div>
+</body>
+</html>

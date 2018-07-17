@@ -1,0 +1,186 @@
+html{
+    font-family: 'Lato', sans-serif;
+    line-height: 1.5;
+    font-size: 15px;
+}
+
+*{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+*,*::after,*:before{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.nav{
+    text-align: right;
+}
+
+.nav-modal{
+    background-color: black;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    display: none;
+}
+
+.top{
+    animation: push 0.4s;
+    -webkit-animation: push 0.4s;
+}
+
+@keyframes push {
+    from{
+        top: -300px;
+        opacity: 0;
+    }
+    to{
+        top: 0;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes push {
+    from{
+        top: -300px;
+        opacity: 0;
+    }
+    to{
+        top: 0;
+        opacity: 1;
+    }
+}
+
+.nav-modal button{
+    background-color: black;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 26px;
+    outline: none;
+    float: right;
+}
+
+.nav-modal button:hover{
+    background-color: #666666 ;
+}
+
+ul{
+    text-align: center;
+    line-height: 80px;
+    font-size: 32px;
+    padding: 150px 0;
+    list-style-type: none;
+}
+
+ul li a{
+    text-decoration: none;
+    color: #999999;
+    display: inline-block;
+    padding: 2px 0;
+}
+
+ul li a:hover{
+    color: white;
+}
+
+.buttonbar{
+    display: inline-block;
+    background-color: #fff;
+    font-size: 26px;
+    border: none;
+    outline: none;
+    text-align: center;
+    padding: 5px 26px;
+    cursor:pointer;
+}
+
+.buttonbar:hover{
+    background-color: #eeeeee;
+}
+
+.header{
+    padding: 34px 0;
+    text-align: center;
+    opacity: 0.7;
+}
+
+.button{
+    padding: 6px 12px;
+    border: none;
+    font-size: 15px;
+    background-color: #111;
+    color: #fff;
+    display: inline-block;
+    margin-top: 16px;
+    cursor: pointer;
+    outline: none;
+}
+
+.button:hover{
+    opacity: 0.7;
+}
+
+.column{
+    width: 33.3%;
+    float: left;
+}
+
+.container::after,.container::before{
+    content: "";
+    display: table;
+    clear: both;
+    margin-top: 24px;
+}
+
+.space{
+    padding: 0 8px;
+}
+
+.space img{
+    margin-bottom: 8px;
+}
+
+.space div{
+    padding: 0 8px;
+}
+
+img {
+    padding: 0;
+    margin: -5px;
+    display: inline-block;
+    width: 100%;
+    height: auto;
+}
+
+.footer{
+    text-align: center;
+    margin-top: 72px;
+    padding: 56px;
+    background-color: #eeeeee;
+}
+
+.footer p a{
+    color: #111111;
+}
+
+.iconbar{
+    font-size: 18px;
+}
+
+.iconbar i{
+    padding: 2px;
+    cursor: pointer;
+}
+
+.iconbar i:hover{
+    opacity: 0.5;
+}
+
+@media only screen and (max-width: 600px) {
+    .column{width: 100%}
+}

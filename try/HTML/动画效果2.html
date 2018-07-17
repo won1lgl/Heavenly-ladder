@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画效果2</title>
+    <style>
+        .animation {
+            background-color: #801b1f;
+            width: 200px;
+            height: 200px;
+            box-shadow: 5px 5px 8px grey, 10px 10px 14px grey;
+            position: relative;
+            animation: color 5s infinite;
+            -webkit-animation: color 5s infinite;
+            -moz-animation: color 5s infinite;
+        }
+        @keyframes color {
+            0% {
+                top: 0;
+                left: 0
+            }
+            25% {
+                top: 0;
+                left: 100%
+            }
+            50% {
+                top: 100%;
+                left: 100%
+            }
+            75% {
+                top: 100%;
+                left: 0
+            }
+            100% {
+                top: 0;
+                left: 0
+            }
+        }
+        @-webkit-keyframes color {
+            0% {
+                top: 0;
+                left: 0
+            }
+            25% {
+                top: 0;
+                left: 100%
+            }
+            50% {
+                top: 100%;
+                left: 100%
+            }
+            75% {
+                top: 100%;
+                left: 0
+            }
+            100% {
+                top: 0;
+                left: 0
+            }
+        }
+        @-moz-keyframes color {
+            0% {
+                top: 0;
+                left: 0
+            }
+            25% {
+                top: 0;
+                left: 100%
+            }
+            50% {
+                top: 100%;
+                left: 100%
+            }
+            75% {
+                top: 100%;
+                left: 0
+            }
+            100% {
+                top: 0;
+                left: 0
+            }
+        }
+        body{
+            width: 1300px;
+            height: 550px;
+        }
+    </style>
+</head>
+<body>
+<div class="animation">
+
+</div>
+</body>
+</html>

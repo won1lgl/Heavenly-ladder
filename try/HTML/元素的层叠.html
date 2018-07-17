@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>float</title>
+    <style>
+        .div1{
+            border: 3px solid red;
+        }
+        .div2{
+            border:3px solid blue;
+            height: 150px;
+            width: 150px;
+            float: right;
+        }
+        .clearfix::after{
+            content:"";
+            clear: both;
+            display: table;
+        }
+       </style>
+</head>
+<body>
+ <div class="div1 clearfix">
+     <b>这他妈是一段话</b>
+     <div class="div2">
+         <p>这特么也是一段话</p>
+     </div>
+ </div>
+</div>
+</body>
+</html>

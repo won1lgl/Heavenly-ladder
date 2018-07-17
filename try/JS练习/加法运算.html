@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>加法</title>
+    <script>
+        window.onload=function () {
+            var a = document.getElementById('txt1');
+            var b = document.getElementById('txt2');
+            var c = document.getElementById('btn1');
+            c.onclick = function () {
+                var d=parseFloat(a.value);
+                var e=parseFloat(b.value);
+                if(isNaN(d))
+                {alert('你他妈第一个输的什么玩意')}
+                else if(isNaN(e))
+                {alert('第二个输错了，傻逼')}
+                else
+                {alert(d+e)}
+                // NAN not a number 不是一个数
+                // isNaN()判断一个数是否为NAN的唯一方法
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="text" id="txt1"><span>+</span>
+<input type="text" id="txt2">
+<input type="button" value="相加" id="btn1">
+</body>
+</html>

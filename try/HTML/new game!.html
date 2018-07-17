@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+</head>
+<body>
+<h1>注册成为京吹大家庭</h1>
+<p>请输入用户名</p>
+<form class="对应的css" action="提交的网页" method="post">
+<!--post的内容不会显示在网页上，且提交的信息量更大，而get则会将内容显示在网页上，可用于搜索内容等-->
+<label for="name">用户名</label>
+<input id="name" type="text" name="username">
+<br>
+<label for="password">密码</label>
+<input id="password" type="password" name="password">
+<br>
+<input type="radio" name="sex">男
+<input type="radio" name="sex">女
+<br>
+<input type="checkbox" name="career">学生
+<input type="checkbox" name="career">员工
+<input type="checkbox" name="career">老板
+<br>
+充值会员期限
+<select name="time">
+    <option value="1">一年</option>
+    <option value="2">十年</option>
+    <option selected value="3">永久</option>
+</select>
+<br>
+<input type="button" name="submit" value="提交">
+<br>
+<button type="reset">真的别点</button>
+</form>
+</body>
+</html>

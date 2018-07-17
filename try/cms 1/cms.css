@@ -1,0 +1,84 @@
+*{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+*,*::after,*:before{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.header{
+    height: 100px;
+    width: 100%;
+    background-color: #404040;
+    padding-top:0;
+    /*display: none;*/
+}
+
+
+.tittle{
+    height: 100px;
+    line-height: 100px;
+    padding-left:30px ;
+}
+
+.header h1{
+    color: white;
+    display: inline-block;
+    margin-left: 100px;
+    margin-top: 27px;
+}
+
+
+.username{
+    height: 100px;
+    line-height: 100px;
+}
+
+.username{
+    display: inline-block;
+    height: 50px;
+    padding: 0;
+    line-height: 50px;
+    font-family: 黑体,sans-serif;
+    font-size: 30px;
+    color: white;
+    position: absolute;
+    right: 185px;
+    top: 23px;
+}
+
+.button{
+    display: inline-block;
+    width: 160px;
+    height: 50px;
+    line-height: 50px;
+    background-color: #eeeeee;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 23px;
+    cursor: pointer;
+    font-family: 黑体, sans-serif;
+    font-weight: 900;
+    letter-spacing: 4px;
+    position: absolute;
+    right: 10px;
+    top: 22px;
+}
+
+.button:hover{
+    opacity: 0.7;
+}
+
+
+.photo{
+    margin-top: 2px;
+    /*display: none;*/
+}
+
+@media only screen and (max-width:600px){
+    .header{height: 200px}
+    .header h1{margin-left: 45px}
+    .username{top: 123px;left: 55px;font-size: 20px}
+    .button{top: 122px;left: 180px}
+}

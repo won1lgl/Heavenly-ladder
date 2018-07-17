@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>垂直居中</title>
+    <style>
+        .v1{
+            border: 3px solid red;
+            height: 200px;
+            position: relative;
+            background-color:rgba(240,20,56,0.5);
+            width: 500px;
+            margin: auto;
+            box-shadow: 10px 10px 5px grey,17px 17px 10px grey;
+            transition: width 1s ease-in 2s,height 0.7s 2s;
+            -webkit-transition: width 1s ease-in 2s,height 0.7s 2s;
+
+        }
+        .v1:hover{width: 800px;height: 233px}
+        .v1 p{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            margin: 0px;
+            font-weight: 400;
+            font-family: "Arial Black";
+            font-size: 20px;
+        }
+        .v2{
+            border: 3px dotted green;
+            height: 200px;
+            text-align: center;
+            line-height: 400px;
+            margin: 20px;
+            overflow: auto;
+            background: url("../图片/spiration-light.png");
+        }
+        .v2 p{
+            display: inline-block;
+            font-size: 300px;
+            margin: 0px;
+        }
+        img{
+            display:block;
+            margin: auto;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+<div class="v1">
+    <p>我就是想垂直局个中</p>
+</div>
+<div class="v2">
+    <p>垂直居中可真尼玛的不容易</p>
+</div>
+<img src="http://img.dongman.fm/public/bb6a2f0977f54613d13f28f98b8036ee.jpg"width=500px height="auto" alt="业界良心">
+</body>
+</html>

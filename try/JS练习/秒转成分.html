@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function () {
+            var oTxt=document.getElementById('txt1');
+            var oBtn=document.getElementById('btn1');
+            oBtn.onclick=function () {
+                var a=parseInt(oTxt.value);
+                if(isNaN(a)){
+                    alert('请睿智的您输入数字')
+                }
+                else {
+                    alert(parseInt(a/60)+'分'+a%60+'秒')
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<label for="txt1">请输入秒数</label>
+<input type="text" id="txt1">
+<input type="button" value="转换成分钟" id="btn1">
+</body>
+</html>

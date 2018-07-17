@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 250px;
+            height: 400px;
+            background-color: #eeeeee;
+            margin: 100px auto;
+            padding: 0;
+            box-shadow: 8px 8px rgba(0,0,0,0.8), 12px 12px rgba(0,0,0,0.6);
+        }
+        ul{
+            list-style: none;
+            display: block;
+            margin:17px;
+            padding: 0;
+        }
+        ul li{
+            width: 50px;
+            height: 50px;
+            float: left;
+            background-color: #666666;
+            margin: 8px 10px;
+            text-align: center;
+            border: 1px black solid;
+            cursor: pointer;
+        }
+        ul li:hover{
+            opacity: 0.7;
+        }
+        ul li h2{
+            font-size: 20px;
+            color: white;
+            margin: 2px auto;
+        }
+        ul li p{
+            font-size: 12px;
+            color: white;
+            margin: 0;
+        }
+        #div2{
+            width: 200px;
+            height: 100px;
+            background-color:white;
+            position: absolute;
+            top: 440px;
+            margin: 0 25px;
+            color: #666666;
+            font-family: 华文隶书;
+            text-align: center;
+        }
+        .active{
+            background-color: black;
+        }
+        #div2 h2{
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            font-size: 24px;
+        }
+        .title{
+            font-family: 幼圆;
+            text-align: center;
+            font-weight: bolder;
+        }
+    </style>
+    <script>
+        window.onload=function () {
+            var odiv = document.getElementById('div1');
+            var ali = odiv.getElementsByTagName('li');
+            var otxt = odiv.getElementsByTagName('div')[0];
+            var arr=['过年了，大家一起商量去哪给姬儿放假~~',
+            '年过完了，洗洗睡吧',
+            '开学啦，又要写不完作业啦',
+            '天气变暖了，又到了交配的时间啦，肾不够用啊',
+                '放个小假，又可以浪一波了',
+                '等挂完科就可以回家躺尸啦',
+                '暑假真尼玛开心啊，钱又要花没啦',
+                '要开学了，作业还没写啊',
+                '补考时作弊被抓，完犊子了',
+                '休学回家，又可以浪啦',
+                '退学通知书下来了，这辈子不用学习啦',
+                '开始工地搬砖，全局终'
+        ];
+            for (var i = 0; i < ali.length; i++) {
+                ali[i].index=i;
+                ali[i].onclick = function () {
+                    for (var i = 0; i < ali.length; i++) {
+                        ali[i].className = ''
+                    }
+                    this.className = 'active';
+                    otxt.innerHTML='<h2>'+(this.index+1)+'月啦</h2> <p>'+arr[this.index]+'</p>'
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<h1 class="title">一名工大大学生的的贰零一八</h1>
+<div class="clanerder" id="div1">
+    <ul>
+        <li class="active"><h2>1</h2><p>Jan</p></li>
+        <li><h2>2</h2><p>Feb</p></li>
+        <li><h2>3</h2><p>Mar</p></li>
+        <li><h2>4</h2><p>Apr</p></li>
+        <li><h2>5</h2><p>May</p></li>
+        <li><h2>6</h2><p>Jun</p></li>
+        <li><h2>7</h2><p>July</p></li>
+        <li><h2>8</h2><p>Aug</p></li>
+        <li><h2>9</h2><p>Sept</p></li>
+        <li><h2>10</h2><p>Oct</p></li>
+        <li><h2>11</h2><p>Nov</p></li>
+        <li><h2>12</h2><p>Dec</p></li>
+    </ul>
+<div id="div2">
+    <h2>1月啦</h2>
+    <p>过年了，大家一起商量去哪给姬儿放假~~</p>
+</div>
+</div>
+</body>
+</html>

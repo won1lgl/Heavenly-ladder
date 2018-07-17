@@ -1,0 +1,185 @@
+*{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+*,*::after,*:before{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.header {
+    height: 100px;
+    width: 100%;
+    background-color: #404040;
+    padding-top: 0;
+    min-width: 400px;
+}
+
+.header h1{
+    color: white;
+    display: inline-block;
+    margin-left: 100px;
+    margin-top: 27px;
+}
+
+.button{
+    display: inline-block;
+    width: 160px;
+    height: 50px;
+    line-height: 50px;
+    background-color: #eeeeee;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 23px;
+    cursor: pointer;
+    font-family: 黑体, sans-serif;
+    font-weight: 900;
+    letter-spacing: 4px;
+    position: absolute;
+    right: 10px;
+    top: 22px;
+}
+
+.button:hover{
+    opacity: 0.7;
+}
+
+.column{
+    height: 60px;
+    background-color:#404040 ;
+    color: white;
+    border-radius: 5px;
+    margin:3px 3px 10px 3px ;
+    position: relative;
+    cursor: pointer;
+    min-width: 400px;
+}
+
+.column:hover{
+    opacity: 0.8;
+}
+
+.title{
+    display: inline-block;
+    font-size: larger;
+    position: absolute;
+    left: 40px;
+    top: 20px;
+    font-weight: bold;
+}
+
+.writer{
+    position: absolute;
+    font-family: 宋体 sans-serif;
+    right: 260px;
+    top: 20px;
+}
+
+.date{
+    position: absolute;
+    font-size: large;
+    right: 80px;
+    top:20px;
+}
+
+.back{
+    position: absolute;
+    left: 20px;
+    top: 30px;
+    cursor: pointer;
+}
+
+.back:hover{
+    opacity: 0.7;
+}
+
+.footer{
+    position: relative;
+    height: 300px;
+}
+
+.pageup{
+    position: absolute;
+    border: 1px #666666 solid;
+    width: 180px;
+    height: 60px;
+    font-family: 宋体 sans-serif;
+    font-size: 30px;
+    left: 26%;
+    top: 100px;
+    line-height: 60px;
+    text-align: center;
+    color: #666666;
+    cursor: pointer;
+}
+
+.pagedown{
+    position: absolute;
+    border: 1px #666666 solid;
+    width: 180px;
+    height: 60px;
+    font-family: 宋体 sans-serif;
+    font-size: 30px;
+    right: 26%;
+    top: 100px;
+    line-height: 60px;
+    text-align: center;
+    color: #666666;
+    cursor: pointer;
+}
+
+.pageup:hover{
+  background-color: #666666;
+    color: white;
+    border-color: black ;
+}
+
+.pagedown:hover{
+    background-color: #666666;
+    color: white;
+    border-color: black ;
+}
+
+@media only screen and (max-width:732px){
+    .header{
+        height: 150px
+    }
+    .button{
+        width: 120px;
+        height: 38px;
+        font-size: 18px;
+        top:90px;
+        left: 160px;
+        line-height: 38px;
+    }
+    .column{
+        height: 85px;
+    }
+    .writer{
+        top: 50px;
+        left: 40px;
+    }
+    .date{
+        top: 50px;
+        left: 140px;
+    }
+    .pageup{
+        left: 50px;
+        width: 100px;
+        height:33px ;
+        font-size: 16px;
+        line-height: 33px;
+        top: 40px;
+    }
+    .pagedown{
+        right: 50px;
+        width: 100px;
+        height:33px ;
+        font-size: 16px;
+        line-height: 33px;
+        top: 40px;
+    }
+    .footer{
+        height: 100px;
+    }
+}

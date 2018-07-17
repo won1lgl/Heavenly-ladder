@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    window.onload=function () {
+        var btn = document.getElementById('btn');
+        btn.onclick = function () {
+            var a = new XMLHttpRequest();
+            a.open('get', 'get.txt', true);
+            a.send();
+            alert(a.readyState);
+            alert(a.status)
+        }
+    }
+</script>
+<body>
+<input type="button" value="我服" id="btn">
+<a href="get.txt">w </a>
+</body>
+</html>

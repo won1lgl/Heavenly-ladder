@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function change (ah) {
+            var div=document.getElementById('div1');
+            div.style.background=ah;
+        }
+        function exchange(name,tap) {
+            var b=document.getElementById('div1');
+            b.style[name]=tap;
+
+        }
+        function back () {
+            var c=document.getElementById('div1');
+            c.style.width='200px';
+            c.style.height='200px';
+            c.style.background='aliceblue'
+
+        }
+    </script>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            border:  5px dotted #eeeeee;
+            background: aliceblue;
+            transition: 1s;
+            cursor: pointer;
+            margin: auto;
+        }
+        #div1:hover{
+            opacity: 0.2;
+        }
+        .div2{
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="div2">
+<input type="button" value="变黄" onclick="change('yellow')">
+<input type="button" value="变红" onclick="change('red')">
+<input type="button" value="变黑" onclick="change('black')">
+<input type="button" value="变高" onclick="exchange('height','400px')">
+<input type="button" value="变宽" onclick="exchange('width','400px')">
+<input type="button" value="变绿" onclick="exchange('background','green')">
+<input type="button" value="重置" onclick="back()">
+</div>
+<div id="div1">
+
+</div>
+</body>
+</html>

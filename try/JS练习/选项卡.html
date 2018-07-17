@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1 div{
+            width: 200px;
+            padding: 100px 0;
+            border: #b3d4fc 2px solid;
+            background-color: #eeeeee;
+            display: none;
+            font-weight: bolder;
+            font-size: large;
+            font-family: 微软雅黑 ;
+            text-align: center;
+        }
+        #div1 .active{
+            background-color: yellow;
+        }
+    </style>
+    <script>
+        window.onload=function () {
+            var a=document.getElementById('div1');
+            var b=a.getElementsByTagName('input');
+            var c=a.getElementsByTagName('div');
+            for (var i=0;i<b.length;i++){
+                b[i].index=i;
+                b[i].onclick=function () {
+                for (var i=0;i<b.length;i++)
+                {b[i].className='';
+                c[i].style.display='none'}
+                this.className='active';
+                c[this.index].style.display='block'
+
+            }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="div1">
+<input type="button" value="教育" class="active">
+<input type="button" value="出国">
+<input type="button" value="招生">
+<input type="button" value="专业">
+<div style="display: block">教育</div>
+<div >出国</div>
+<div >招生</div>
+    <div >专业</div>
+</div>
+</body>
+</html>

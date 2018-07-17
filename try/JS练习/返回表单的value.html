@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form id="frm1" action="demo-form">
+    First name: <input type="text" name="fname" value="32"><br>
+    Last name: <input type="text" name="lname" value="231"><br>
+    <input type="submit" value="Submit" id="btn1">
+</form>
+
+
+<p>Return the value of each element in the form:</p>
+<script>
+    var x=document.getElementById("frm1");
+    for (var i=0;i<x.length;i++)
+    {
+        document.write(x.elements[i].value);
+        document.write("<br>");
+    }
+    var btn=document.getElementById('btn1');
+    btn.onclick=function () {
+        var x=document.getElementById("frm1");
+        for (var i=0;i<2;i++)
+        {
+            document.write(x.elements[i].value);
+            document.write("<br>");
+        }
+    }
+</script>
+
+</body>
+</html>
