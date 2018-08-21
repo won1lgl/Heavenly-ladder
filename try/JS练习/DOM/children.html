@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function () {
+            var btn=document.getElementById('btn1');
+            var div=document.getElementById('div1');
+            var x1=document.getElementsByTagName('b');
+            btn.onclick=function () {
+                for(var i=0;i<div.children.length;i++){
+                    div.children[i].innerHTML='WTF'
+                }
+            };
+            // children元素只包含元素结点
+            for(var i=0;i<x1.length;i++){
+                x1[i].onclick=function () {
+                    this.parentNode.style.display='none'
+                }
+            }
+            //parentNode为父节点属性    *
+        }
+    </script>
+</head>
+<body>
+<div id="div1">
+    <span class="title"><b>可真好</b></span>
+    <span><b>啦啦啦</b></span>
+    <span><b>6666</b></span>
+</div>
+<input type="button" value="巴拉拉变身" id="btn1">
+</body>
+</html>

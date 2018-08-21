@@ -11,19 +11,19 @@
         window.onload=function () {
             var btn = document.getElementById('btn1');
             btn.onclick = function () {
-                window.location.href = "login.html"
+                window.location.href = "http://139.199.79.232/HearFresh_Web/login/login.html"
             };
-            var x1=new XMLHttpRequest();
-            x1.open('get','demo.php',true);
+            var x1 = new XMLHttpRequest();
+            x1.open('get', 'http://139.199.79.232/HearFresh/IsLogin.php', true);
             x1.send();
-            x1.onreadystatechange=function () {
-                if(x1.readyState==4&&x1.status==200){
-                    var txt=JSON.parse(x1.responseText);
-                    if(txt.isLogin==2){
-                        var x2=document.getElementById('header');
-                        var x3=document.getElementById('photo');
-                        x2.style.display="block";
-                        x3.style.display="block";
+            x1.onreadystatechange = function () {
+                if (x1.readyState == 4 && x1.status == 200) {
+                    var txt = JSON.parse(x1.responseText);
+                    if (txt.isLogin == 1) {
+                        var x2 = document.getElementById('header');
+                        var x3 = document.getElementById('photo');
+                        x2.style.display = "block";
+                        x3.style.display = "block";
                     }
                 }
             }
@@ -38,7 +38,7 @@
 </div>
 <div class="photo" id="photo">
 <a href="create.html"><img src="createNews.png" width="370px" height=auto></a>
-<a href="explore.html"><img src="exploreNews.png" width="370px" height="auto"></a>
+<a href="http://139.199.79.232/HearFresh_Web/cms2/explore.html"><img src="exploreNews.png" width="370px" height="auto"></a>
 </div>
 </body>
 </html>

@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>StorageStarted</title>
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="login.css" rel="stylesheet">
+</head>
+<script>
+    window.onload=function () {
+        var btn = document.getElementById('btn1');
+        btn.onclick = function () {
+            var x1 = new XMLHttpRequest();
+            var userName = document.getElementById('inputUsername');
+            var passWord = document.getElementById('inputPassword');
+            x1.open('post', 'http://139.199.79.232/HearFresh/Login.php', true);
+            x1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            x1.send("username=" +userName.value+ "&password="+passWord.value );
+            x1.onreadystatechange = function () {
+                if (x1.readyState == 4 && x1.status == 200) {
+                    var txt=JSON.parse(x1.responseText);
+                    if(txt.message=="success"){
+                        window.location.href="http://139.199.79.232/HearFresh_Web/cms1/cms.html"
+                    }
+                    else {
+                        alert("登陆信息有误！")
+                    }
+
+                }
+            }
+        }
+    }
+</script>
+<body>
+<div class="container">
+    <div class="header clearfix">
+        <nav>
+            <ul class="nav nav-tabs pull-right">
+            </ul>
+            <h3 class="text-muted">欢迎使用</h3>
+        </nav>
+    </div>
+
+    <div class="form-signin" >
+        <h2 class="form-signin-heading">登录</h2>
+        <label for="inputUsername" class="sr-only">username</label>
+        <input type="username" id="inputUsername" class="form-control" placeholder="username" required autofocus name="name">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required name="password">
+        <input type="button" class="btn btn-lg btn-primary btn-block" id="btn1" value="登录">
+    </div>
+</div> <!-- /container -->
+<div id="myDiv">
+
+</div>
+
+</body>
+</html>

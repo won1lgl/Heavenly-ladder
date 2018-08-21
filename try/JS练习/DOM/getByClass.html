@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function () {
+
+
+            // function getByClass(oParent,sClass) {
+            //     var aResult=[];
+            //     var aEle=oParent.gete
+            // }
+            var a = document.getElementsByClassName('aa');
+            var btn = document.getElementById('btn1');
+            btn.onclick = function () {
+                for (var i = 0; i < a.length; i++) {
+                    a[i].innerHTML = 'yellow';
+                }
+                alert('sweet')
+            }
+        }
+    </script>
+</head>
+<body>
+<div>
+    <span>32</span>
+    <span class="aa">32</span>
+    <span>3123</span>
+</div>
+<div>
+    <span>132</span>
+    <span class="aa">312</span>
+    <span>3123</span>
+</div>
+<input type="button" value="click" id="btn1">
+</body>
+</html>

@@ -12,7 +12,7 @@
     width: 100%;
     background-color: #404040;
     padding-top:0;
-    /*display: none;*/
+    display: none;
 }
 
 
@@ -73,7 +73,7 @@
 
 .photo{
     margin-top: 2px;
-    /*display: none;*/
+    display: none;
 }
 
 @media only screen and (max-width:600px){

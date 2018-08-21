@@ -1,0 +1,373 @@
+*{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+*,*::after,*:before{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.header {
+    height: 104px;
+    width: 100%;
+    background-color: #404040;
+    padding-top: 0;
+    min-width: 400px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+}
+
+.header h1{
+    color: white;
+    display: inline-block;
+    margin-left: 100px;
+    margin-top: 30px;
+}
+
+.button1{
+    display: inline-block;
+    width: 186px;
+    height: 63px;
+    line-height: 63px;
+    background-color: #ffffff;
+    text-align: center;
+    border-radius: 14px;
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    right: 37px;
+    top: 21px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    color: #404040;
+    font-weight: 600;
+    font-family: 黑体, sans-serif;
+}
+
+.button1:hover{
+    opacity: 0.7;
+}
+
+.button2{
+    display: inline-block;
+    width: 186px;
+    height: 63px;
+    line-height: 63px;
+    background-color: #ffffff;
+    text-align: center;
+    border-radius: 14px;
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    right: 245px;
+    top: 21px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    color: #404040;
+    font-weight: 600;
+    font-family: 黑体, sans-serif;
+}
+
+.button2:hover{
+    opacity: 0.7;
+}
+
+.back{
+    position: absolute;
+    left: 20px;
+    top: 33px;
+    cursor: pointer;
+}
+
+.back:hover{
+    opacity: 0.7;
+}
+
+body{
+    background-color:#404040 ;
+}
+
+.contain{
+    width: 100%;
+    height:2500px ;
+    min-width: 1920px;
+}
+
+.maintain{
+    width: 830px;
+    height: 492px;
+    background-color: #f7f8f9;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    position: relative;
+    left: 545px;
+    top:12px;
+
+}
+
+.camera{
+    height: 49px;
+    width: auto;
+    position: absolute;
+    top: 221px;
+    left: 390px;
+    cursor: pointer;
+}
+
+.info{
+    width: 156px;
+    height: 35px;
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 1.35;
+    text-align: left;
+    color: #e2e3e4;
+    position: absolute;
+    top: 289px;
+    left: 334px;
+}
+
+.title{
+    min-width: 100px;
+    height: 53px;
+    line-height: 1.93;
+    letter-spacing: 1px;
+    text-align: left;
+    color: #404040;
+    position: absolute;
+    top: 354px;
+    left: 63px;
+    font-family: 黑体, sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.subtitle{
+    min-width: 100px;
+    line-height: 2.07;
+    letter-spacing: 0.4px;
+    text-align: left;
+    color: #aaaaaa;
+    position: absolute;
+    left: 63px;
+    top: 416px;
+    font-size: 29px;
+    cursor: pointer;
+}
+
+.passage{
+    width: 830px;
+    background-color: #ffffff;
+    margin-top: 0;
+    margin-right: auto;
+    margin-left: auto;
+    min-height: 1711px;
+    position: absolute;
+    left: 545px;
+    top: 608px;
+}
+
+.writer{
+    width: 240px;
+    height: 38px;
+    font-size: 29px;
+    font-weight: bold;
+    text-align: left;
+    position: absolute;
+    top: 36px;
+    left: 65px;
+}
+
+.time{
+    height: 30px;
+    width: 300px;
+    text-align: left;
+    color: #808080;
+    font-size: 22px;
+    font-weight: bold;
+    position: absolute;
+    left: 506px;
+    top: 40px;
+}
+
+.hint{
+    width: 246px;
+    height: 34px;
+    text-align: left;
+    color: #e2e3e4;
+    font-size: 34px;
+    position: absolute;
+    left: 65px;
+    top: 112px;
+    cursor: pointer;
+}
+
+.scan{
+    height: 328px;
+    width: 500px;
+    position:fixed;
+    top: 157px;
+    left: 33px;
+}
+
+.scantitle{
+    width: 155px;
+    height: 38px;
+    color: #ffffff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 29px;
+}
+
+.imgscan{
+    width: 452px;
+    height: 152px;
+    background-color: rgb(80,80,80);
+    position: absolute;
+    top: 70px;
+    left: 0;
+}
+
+.imgscan img{
+    display: inline-block;
+}
+
+.scanNews{
+    background-color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 452px;
+    height: 152px;
+    display: none;
+}
+
+.scanText{
+    position: absolute;
+    left: 182px;
+    top: 20px;
+    width: 240px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.select{
+    width: 454px;
+    height: 395px;
+    border: solid 2px rgba(255,255,255,0.4);
+    position: fixed;
+    right: 37px;
+    top: 161px;
+}
+
+.texttitle{
+    width: 180px;
+    height: 40px;
+    color: #ffffff;
+    font-size: 30px;
+    position: absolute;
+    top: 44px;
+    left: 54px;
+}
+
+.btn1{
+    display: inline-block;
+    width: 95px;
+    height: 40px;
+    font-size: 30px;
+    position: absolute;
+    left: 54px;
+    top: 109px;
+    color: #ffffff;
+    opacity: 0.4;
+    cursor: pointer;
+}
+
+.btn2{
+    display: inline-block;
+    width: 95px;
+    height: 40px;
+    font-size: 30px;
+    position: absolute;
+    left: 179px;
+    top: 109px;
+    color: #ffffff;
+    opacity: 0.4;
+    cursor: pointer;
+}
+
+.btn3{
+    display: inline-block;
+    width: 95px;
+    height: 40px;
+    font-size: 30px;
+    position: absolute;
+    left: 303px;
+    top: 109px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.choice{
+    width: 310px;
+    height: 40px;
+    line-height: 1.33;
+    color: #ffffff;
+    font-size: 30px;
+    position: absolute;
+    top: 224px;
+    left: 54px;
+}
+
+.img{
+    width: 150px;
+    height: 61px;
+    border-radius: 15px;
+    border: solid 3px #ffffff;
+    position: absolute;
+    left: 54px;
+    bottom: 45px;
+    font-size: 25px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 51px;
+    cursor: pointer;
+}
+
+.vid{
+    width: 150px;
+    height: 61px;
+    border-radius: 15px;
+    border: solid 3px #ffffff;
+    position: absolute;
+    right: 54px;
+    bottom: 45px;
+    font-size: 25px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 51px;
+    cursor: pointer;
+}
+
+.img:hover{
+    background-color: white;
+    color: #111111;
+    font-weight: bold;
+    border-color: red;
+}
+
+.vid:hover{
+    background-color: white;
+    color: #111111;
+    font-weight: bold;
+    border-color: red;
+}
+
+.bigText{
+    max-width: 700px;
+    width: 700px;
+    height: 1500px;
+    position: absolute;
+    top: 112px;
+    left:65px ;
+    overflow: auto;
+    font-size:32px;
+}

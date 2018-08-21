@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            height:800px;
+            width: auto;
+            background-color: #204982;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    <div id="div2">hello div</div>
+    <p id="p">hello p</p>
+</div>
+<input type="button" value="增加" onclick="func1()">
+<input type="button" value="删除" onclick="func2()">
+
+<script>
+
+    function func1() {
+        var ele=document.getElementById("div1");  //增加必须找到要增加标签的父级标签
+        var add_son=document.createElement("p");   // 这是一个创建P标签的方法
+        ele.appendChild(add_son);                  // 这是给父级标签添加一个孩子
+        add_son.innerHTML="<b>添加成功！</b>"      // 给新添加的子标签 加上文本 也可以加上标签，引号内对于innerHTML来说都是字符串
+    }
+    function func2() {
+        var ele=document.getElementById("div1");    //删除与增加一样，同样要找到父级标签
+        var del_son=ele.lastElementChild;          // 指明要删除的标签在最后的位置(last)
+        ele.removeChild(del_son);                  // remove方法删除父级下的子标签
+    }
+</script>
+</body>
+</html>

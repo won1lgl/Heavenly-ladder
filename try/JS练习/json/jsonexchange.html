@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+    var Txt='{"flag":"001","message":"success","data":{"news":[{"newsId":"5b441da0fe88c20035fb288f","title":"hhh","reading":9,"createdAt":{"date":"2018-07-10 02:44:48.744000","timezone_type":3,"timezone":"UTC"}},{"newsId":"5b4303dad50eee003ae2d9fc","title":"Test","reading":7,"createdAt":{"date":"2018-07-09 06:42:34.420000","timezone_type":3,"timezone":"UTC"}}],"headLine":{"$headLineId":null,"title":"12312eqwe21","reading":0,"createdAt":{"date":"2018-07-12 06:30:04.729000","timezone_type":3,"timezone":"UTC"}}}}';
+    var txt=JSON.parse(Txt);
+    for(var i=0;i<txt.data.news.length;i++)
+    alert(txt.data.news[i].title)
+    </script>
+</head>
+<body>
+
+</body>
+</html>

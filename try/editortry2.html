@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            min-height: 100px;
+            min-width: 100px;
+            border: 2px red solid;
+        }
+
+        .btn1{
+            width: 20px;
+            height: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        window.onload=function () {
+            function changeFont() {
+                document.execCommand('bold',false);
+            }
+            function turn() {
+                document.execCommand('SuperScript',false);
+            }
+            function big() {
+                document.execCommand('fontSize', false, "20")
+            }
+            function turnRed() {
+                document.execCommand('foreColor', false, "red")
+            }
+            function change() {
+                big();
+                turnRed()
+            }
+            function normal() {
+                document.execCommand('fontSize', false, "4")
+            }
+            function turnBlack() {
+                document.execCommand('foreColor', false, "black")
+            }
+            function changeBack() {
+                normal();
+                turnBlack()
+            }
+            var btn=document.getElementById('btn1');
+            var red=document.getElementById('btn2');
+            var kill=document.getElementById('btn3');
+            var live=document.getElementById('btn4');
+            var bug=document.getElementById('btn5');
+            var fuck=document.getElementById('btn6');
+            btn.onclick=big;
+            red.onclick=turnRed;
+            kill.onclick=change;
+            live.onclick= changeBack;
+            bug.onclick=changeFont;
+            fuck.onclick=turn
+        }
+
+    </script>
+
+</head>
+<body>
+<div contenteditable="true" class="box">
+
+</div>
+<div >
+    <div>
+       <input type="button" id="btn1" value="变大">
+        <input type="button" id="btn2" value="变红">
+        <input type="button" id="btn3" value="大改">
+        <input type="button" id="btn4" value="回归">
+        <input type="button" id="btn5" value="字体">
+        <input type="button" id="btn6" value="不知">
+    </div>
+
+
+    <div  contenteditable="true" class="box" ></div>
+</div>
+
+</body>
+</html>

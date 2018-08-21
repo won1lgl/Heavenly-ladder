@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="explore.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1 ">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script>
+        window.onload=function () {
+            var page = 1;
+            var pageSize = 20;
+            var x1 = document.getElementById('back');
+            var x2 = document.getElementById('btn1');
+            var x0 = new XMLHttpRequest();
+            var pgp = document.getElementById('pageup');
+            var pgd = document.getElementById('pagedown');
+            var div = document.getElementById('odiv');
+            if (page == 1) {
+                pgp.style.display = "none"
+            }
+            x0.open('post', 'http://139.199.79.232/HearFresh/GetTheNewsList.php', true);
+            x0.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            x0.send("page=" + page + "&pageSize=" + pageSize);
+            x0.onreadystatechange = function () {
+                if (x0.readyState == 4 && x0.status == 200) {
+                    var Txt = x0.responseText;
+                    var txt = JSON.parse(Txt);
+                    if (txt.data.news.length < 19) {
+                        pgd.style.display = "none"
+                    }
+                    var hdiv = document.createElement('div');
+                    div.appendChild(hdiv);
+                    hdiv.className = 'column';
+                    for (var a = 0; a < 3; a++) {
+                        var hspan = document.createElement('span');
+                        hdiv.appendChild(hspan);
+                    }
+                    var bspan = hdiv.getElementsByTagName('span');
+                    bspan[0].innerHTML = txt.data.headLine.title;
+                    bspan[0].className = 'title';
+                    bspan[1].innerHTML = txt.data.headLine.authorName;
+                    bspan[1].className = 'writer';
+                    bspan[2].innerHTML = txt.data.headLine.createdAt.date.substring(0, 10);
+                    bspan[2].className = 'date';
+                    for (var i = 0; i < txt.data.news.length; i++) {
+                        var idiv = document.createElement('div');
+                        div.appendChild(idiv);
+                        for (var s = 0; s < 3; s++) {
+                            var ispan = document.createElement('span');
+                            idiv.className = 'column';
+                            idiv.appendChild(ispan);
+                        }
+                        var aspan = idiv.getElementsByTagName('span');
+                        aspan[0].innerHTML = txt.data.news[i].title;
+                        aspan[0].className = 'title';
+                        aspan[1].innerHTML = txt.data.news[i].authorName;
+                        aspan[1].className = 'writer';
+                        aspan[2].innerHTML = txt.data.news[i].createdAt.date.substring(0, 10);
+                        aspan[2].className = 'date';
+                    }
+                }
+            };
+            x1.onclick = function () {
+                window.location.href = "http://139.199.79.232/HearFresh_Web/cms1/cms.html";
+            };
+            x2.onclick = function () {
+                window.location.href = "http://139.199.79.232/HearFresh_Web/login/login.html";
+            };
+
+
+            //向下翻页的功能
+            pgd.onclick = function () {
+                page = page + 1;
+                pgp.style.display = "block";
+                var hdiv = div.getElementsByTagName('div');
+                for (var i = 0; i < hdiv.length; i++) {
+                    hdiv[i].style.display = "none"
+                }
+                var a0 = new XMLHttpRequest();
+                a0.open('post', 'http://139.199.79.232/HearFresh/GetTheNewsList.php', true);
+                a0.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                a0.send("page=" + page + "&pageSize=" + pageSize);
+                a0.onreadystatechange = function () {
+                    if (a0.readyState == 4 && a0.status == 200) {
+                        var Txt = a0.responseText;
+                        var txt = JSON.parse(Txt);
+                        if (txt.data.news.length < 20) {
+                            pgd.style.display = "none"
+                        }
+                        for (var i = 0; i < txt.data.news.length; i++) {
+                            var idiv = document.createElement('div');
+                            div.appendChild(idiv);
+                            for (var s = 0; s < 3; s++) {
+                                var ispan = document.createElement('span');
+                                idiv.className = 'column';
+                                idiv.appendChild(ispan);
+                            }
+                            var aspan = idiv.getElementsByTagName('span');
+                            aspan[0].innerHTML = txt.data.news[i].title;
+                            aspan[0].className = 'title';
+                            aspan[1].innerHTML = txt.data.news[i].authorName;
+                            aspan[1].className = 'writer';
+                            aspan[2].innerHTML = txt.data.news[i].createdAt.date.substring(0, 10);
+                            aspan[2].className = 'date';
+                        }
+                    }
+                };
+            };
+
+
+            //向上翻页的功能
+            pgp.onclick = function () {
+                page = page - 1;
+                pgd.style.display='block';
+                if(page==1){
+                    pgp.style.display='none'
+                }
+                var hdiv = div.getElementsByTagName('div');
+                for (var i = 0; i < hdiv.length; i++) {
+                    hdiv[i].style.display = "none"
+                }
+                if(page!=1){
+                var b0 = new XMLHttpRequest();
+                b0.open('post', 'http://139.199.79.232/HearFresh/GetTheNewsList.php', true);
+                b0.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                b0.send("page=" + page + "&pageSize=" + pageSize);
+                b0.onreadystatechange = function () {
+                    if (b0.readyState == 4 && b0.status == 200) {
+                        var Txt = b0.responseText;
+                        var txt = JSON.parse(Txt);
+                        for (var i = 0; i < txt.data.news.length; i++) {
+                            var idiv = document.createElement('div');
+                            div.appendChild(idiv);
+                            for (var s = 0; s < 3; s++) {
+                                var ispan = document.createElement('span');
+                                idiv.className = 'column';
+                                idiv.appendChild(ispan);
+                            }
+                            var aspan = idiv.getElementsByTagName('span');
+                            aspan[0].innerHTML = txt.data.news[i].title;
+                            aspan[0].className = 'title';
+                            aspan[1].innerHTML = txt.data.news[i].authorName;
+                            aspan[1].className = 'writer';
+                            aspan[2].innerHTML = txt.data.news[i].createdAt.date.substring(0, 10);
+                            aspan[2].className = 'date';
+                        }
+                        }
+                    }
+                }
+                if (page==1){
+                    var c0 = new XMLHttpRequest();
+                    c0.open('post', 'http://139.199.79.232/HearFresh/GetTheNewsList.php', true);
+                    c0.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    c0.send("page=" + page + "&pageSize=" + pageSize);
+                    c0.onreadystatechange = function () {
+                        if (c0.readyState == 4 && c0.status == 200) {
+                            var Txt = c0.responseText;
+                            var txt = JSON.parse(Txt);
+                            var hdiv = document.createElement('div');
+                            div.appendChild(hdiv);
+                            hdiv.className = 'column';
+                            for (var a = 0; a < 3; a++) {
+                                var hspan = document.createElement('span');
+                                hdiv.appendChild(hspan);
+                            }
+                            var bspan = hdiv.getElementsByTagName('span');
+                            bspan[0].innerHTML = txt.data.headLine.title;
+                            bspan[0].className = 'title';
+                            bspan[1].innerHTML = txt.data.headLine.authorName;
+                            bspan[1].className = 'writer';
+                            bspan[2].innerHTML = txt.data.headLine.createdAt.date.substring(0, 10);
+                            bspan[2].className = 'date';
+                            for (var i = 0; i < txt.data.news.length; i++) {
+                                var idiv = document.createElement('div');
+                                div.appendChild(idiv);
+                                for (var s = 0; s < 3; s++) {
+                                    var ispan = document.createElement('span');
+                                    idiv.className = 'column';
+                                    idiv.appendChild(ispan);
+                                }
+                                var aspan = idiv.getElementsByTagName('span');
+                                aspan[0].innerHTML = txt.data.news[i].title;
+                                aspan[0].className = 'title';
+                                aspan[1].innerHTML = txt.data.news[i].authorName;
+                                aspan[1].className = 'writer';
+                                aspan[2].innerHTML = txt.data.news[i].createdAt.date.substring(0, 10);
+                                aspan[2].className = 'date';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="header" id="header">
+    <span class="back" id="back"><img src="back.png"> </span>
+    <h1>Hearfresh CMS</h1>
+    <span class="button" id="btn1">退出登录</span>
+</div>
+<div id="odiv">
+</div>
+<div class="footer">
+    <div class="pageup" id="pageup">上一页</div>
+    <div class="pagedown" id="pagedown">下一页</div>
+</div>
+</body>
+</html>

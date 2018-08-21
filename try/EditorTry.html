@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            min-height: 100px;
+            min-width: 100px;
+            border: 2px red solid;
+        }
+
+        .btn1{
+            width: 20px;
+            height: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        const changeStyle = (data) => {
+            data.value? document.execCommand(data.command, false, data.value):document.execCommand(data.command, false, null)
+        }
+
+    </script>
+
+</head>
+<body>
+<div contenteditable="true" class="box">
+
+</div>
+<div >
+    <div>
+        <!--调整为斜体-->
+        <span><input type="button" value="斜体" data-command='font-weight' data-value="bold" onclick="changeStyle(this.dataset)" ></span>
+        <span><input type="button" value="正常" data-command='font-weight' data-value="normal" onclick="changeStyle(this.dataset)" ></span>
+        <!--调整字号为1号-->
+        <a href="#" data-command='fontSize' data-value="4" onclick="changeStyle(this.dataset)">1号</a>
+        <a href="#" data-command='fontSize' data-value="20" onclick="changeStyle(this.dataset)">2号</a>
+        <!-- 调整字体颜色为红色 -->
+        <a href="#" data-command='foreColor' data-value="red" onclick="changeStyle(this.dataset)">红色</a>
+        <!-- 调整字体为楷体 -->
+        <a href="#" class='btn middle blue' data-command='fontName' data-value="KaiTi" onclick="changeStyle(this.dataset)">楷</a>
+        <!-- 添加删除线 -->
+        <a href="#" class='btn right grey' data-command='strikeThrough' onclick="changeStyle(this.dataset)">删除线</a>
+        <!-- 调整字体颜色为黑色 -->
+        <a href="#" class='btn middle' data-command='foreColor' data-value="black" onclick="changeStyle(this.dataset)">黑</a>
+        <span class="btn1"><input id="btn1" type="button" value="标题一" data-command='fontSize' data-value="1" onclick="changeStyle(this.dataset)"></span>
+        <span class="btn2"><input type="button" value="标题二" data-command='fontSize' data-value="3" onclick="changeStyle(this.dataset)"></span>
+        <span class="btn3"><input type="button" value="标题三" data-command='fontSize' data-value="7" onclick="changeStyle(this.dataset)"></span>
+    </div>
+
+
+    <div  contenteditable="true" class="box"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .column{
+            height: 60px;
+            background-color:#404040 ;
+            color: white;
+            border-radius: 5px;
+            margin:3px 3px 10px 3px ;
+            position: relative;
+            cursor: pointer;
+            min-width: 400px;
+        }
+
+        .column:hover{
+            opacity: 0.8;
+        }
+        .title{
+            display: inline-block;
+            font-size: larger;
+            position: absolute;
+            left: 40px;
+            top: 20px;
+            font-weight: bold;
+        }
+
+        .writer{
+            position: absolute;
+            font-family: 宋体 sans-serif;
+            right: 260px;
+            top: 20px;
+        }
+
+        .date{
+            position: absolute;
+            font-size: large;
+            right: 80px;
+            top:20px;
+        }
+    </style>
+    <script>
+        window.onload=function () {
+            var Txt='{"flag":"001","message":"success","data":{"news":[{"newsId":"5b441da0fe88c20035fb288f","title":"hhh","reading":9,"createdAt":{"date":"2018-07-10 02:44:48.744000","timezone_type":3,"timezone":"UTC"},"cover":"","authorName":"zhangyongzheng"},{"newsId":"5b4303dad50eee003ae2d9fc","title":"Test","reading":7,"createdAt":{"date":"2018-07-09 06:42:34.420000","timezone_type":3,"timezone":"UTC"},"cover":"","authorName":"shaolizhi"}],"headLine":{"headLineId":"5b46f56ca22b9d003c67c540","title":"12312eqwe21","reading":3,"authorName":"shaolizhi","createdAt":{"date":"2018-07-12 06:30:04.729000","timezone_type":3,"timezone":"UTC"},"cover":"http:\/\/lc-tK3zysXq.cn-n1.lcfile.com\/67a1c7aa34e2b0463a45.png"}}}';
+            var txt=JSON.parse(Txt);
+            var div = document.getElementById('odiv');
+            var hdiv=document.createElement('div');
+            div.appendChild(hdiv);
+            hdiv.className='column';
+            for(var a=0;a<3;a++){
+                var hspan=document.createElement('span');
+                hdiv.appendChild(hspan);
+            }
+            var bspan=hdiv.getElementsByTagName('span');
+            bspan[0].innerHTML=txt.data.headLine.title;
+            bspan[0].className = 'title';
+            bspan[1].innerHTML=txt.data.headLine.authorName;
+            bspan[1].className = 'writer';
+            bspan[2].innerHTML=txt.data.headLine.createdAt.date.substring(0,10);
+            bspan[2].className = 'date';
+            for (var i=0;i<txt.data.news.length;i++){
+                var idiv=document.createElement('div');
+                div.appendChild(idiv);
+                for(var s=0;s<3;s++){
+                    var ispan=document.createElement('span');
+                    idiv.className='column';
+                    idiv.appendChild(ispan);
+                }
+                var aspan=idiv.getElementsByTagName('span');
+                aspan[0].innerHTML=txt.data.news[i].title;
+                aspan[0].className = 'title';
+                aspan[1].innerHTML=txt.data.news[i].authorName;
+                aspan[1].className = 'writer';
+                aspan[2].innerHTML=txt.data.news[i].createdAt.date.substring(0,10);
+                aspan[2].className = 'date';
+            }
+            }
+    </script>
+</head>
+<body>
+<div id="odiv">
+</div>
+<input type="button" value="add" id="btn1">
+</body>
+</html>

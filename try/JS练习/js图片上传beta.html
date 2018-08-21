@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img{
+            /*border: red solid 2px;*/
+            display: inline-block;
+            position: absolute;
+            top: 150px;
+            left: 300px;
+        }
+
+        .picture{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input type="file" name="files" id="fileTog" accept="image/*" multiple="multiple" onchange="changImg(event)">
+    <img alt="" id="myImg" src="" height=400px width=800px>
+    <img src="" id="youImg" width="800px" height="1600px" class="picture">
+</div>
+<script>
+    function changImg(e){
+        var myImg = document.getElementById('myImg');
+        for (var i = 0; i < e.target.files.length; i++) {
+            var file = e.target.files[i];
+            console.log(file);
+            if (!(/^image\/.*$/i.test(file.type))) {
+                continue; //不是图片 就跳出这一次循环
+            }
+            //实例化FileReader API
+            var freader = new FileReader();
+            freader.readAsDataURL(file);
+            freader.onload = function(e) {
+                console.log(e);
+                myImg.setAttribute('src', e.target.result);
+            }
+        }
+    }
+</script>
+</body>
+</html>

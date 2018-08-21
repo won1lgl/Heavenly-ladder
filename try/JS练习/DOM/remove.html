@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function () {
+            var div = document.getElementById('odiv');
+            var d = div.getElementsByTagName('div');
+            for (var i = 0; i < 20; i++) {
+                div.removeChild(d[0])
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="odiv">
+    <div>321</div>
+    <div>123</div>
+    <div>321</div>
+</div>
+</body>
+</html>

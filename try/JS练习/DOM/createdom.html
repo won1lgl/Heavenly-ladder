@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function () {
+        var oul=document.getElementById('ull');
+        var idiv=document.getElementsByTagName('div');
+            for (var i=0;i<4;i++){
+                var oli=document.createElement('li');
+                oul.appendChild(oli)
+            }
+            for (var s=0;s<4;s++){
+                var odiv=document.createElement('div');
+                var ili=document.getElementsByTagName('li');
+                ili[s].appendChild(odiv);
+                odiv.className='css'
+            }
+        }
+    </script>
+    <style>
+    .css{
+        background-color: #666666;
+    }
+    </style>
+</head>
+<body>
+<ul id="ull">
+</ul>
+</body>
+</html>

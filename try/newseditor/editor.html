@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href= editor.css>
+    <script>
+        const changeStyle = (data) => {
+            data.value? document.execCommand(data.command, false, data.value):document.execCommand(data.command, false, null)
+        }
+
+        function changImg(e){
+            var myImg = document.getElementById('myImg');
+            for (var i = 0; i < e.target.files.length; i++) {
+                var file = e.target.files[i];
+                console.log(file);
+                if (!(/^image\/.*$/i.test(file.type))) {
+                    continue; //不是图片 就跳出这一次循环
+                }
+                //实例化FileReader API
+                var freader = new FileReader();
+                freader.readAsDataURL(file);
+                freader.onload = function(e) {
+                    console.log(e);
+                    myImg.setAttribute('src', e.target.result);
+                }
+            }
+        }
+
+        function changeTitle() {
+            var text=document.getElementById('trueTitle');
+            var word=document.getElementById('title');
+            text.innerText=word.innerText
+        }
+
+        window.onload=function () {
+            var header="false";
+            var userId="1419809281";
+            var bk=document.getElementById('back');
+            var Select=document.getElementById('selector');
+            var btn=Select.getElementsByTagName('span');
+            var Public=document.getElementById('btn1');
+            var Title=document.getElementById('title');
+            var SubTitle=document.getElementById('subtitle');
+            var Hint=document.getElementById('hint');
+            var bigText=document.getElementById('bigtext');
+            var save=document.getElementById('btn2');
+            Public.onclick=function () {
+                if(Public.innerText=="正式发布"){
+                    Public.innerText="下架";
+                    var x1=new XMLHttpRequest();
+                    x1.open('post','http://139.199.79.232/HearFresh/CreateNews.php',true);
+                    x1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    x1.send("description="+SubTitle.innerText+"&content="+bigText.innerHTML+"&title="+Title.innerText+"&headLine="+header+"&userId="+userId);
+                    x1.onreadystatechange=function () {
+                        if (x1.readyState == 4 && x1.status == 200){
+                            alert(x1.responseText)
+                        }
+                    }
+                }
+                else {
+                    Public.innerText="正式发布"
+                }
+            };
+            for(var i=0;i<3;i++){
+                btn[i].index=i;
+                btn[i].onclick=function () {
+                    for (var i=0;i<3;i++){
+                        btn[i].style.opacity="0.4";
+                        btn[this.index].style.opacity="1"
+                    }
+                }
+            }
+            bk.onclick=function () {
+                window.location.href="login.html"
+            };
+
+            Title.onclick=function () {
+                if(Title.innerText=="点击输入标题"){
+                    Title.innerText=""
+                }
+                if (SubTitle.innerText==""){
+                    SubTitle.innerText="点击输入副标题"
+                }
+            };
+
+            SubTitle.onclick=function () {
+                if (SubTitle.innerText=="点击输入副标题") {
+                    SubTitle.innerText = "";
+                }
+                if (Title.innerText == "") {
+                    Title.innerText = "点击输入标题"
+                }
+            };
+
+            bigText.onclick=function () {
+                Hint.innerText="";
+            };
+
+            save.onclick=function () {
+                changeTitle();
+                var show=document.getElementById('scanNew');
+                show.style.display="block"
+            }
+
+        }
+    </script>
+</head>
+<body>
+
+<div class="header" id="header">
+    <span class="back" id="back"><img src="back.png"> </span>
+    <h1>Hearfresh CMS</h1>
+    <span class="button2" id="btn2">保存草稿</span>
+    <span class="button1" id="btn1">正式发布</span>
+</div>
+
+<div class="contain">
+<div class="scan">
+    <div class="scantitle">首页效果图</div>
+    <div class="imgscan">
+        <div class="scanNews" id="scanNew">
+        <img alt="" src="" width="152px" height="152px" id="myImg">
+            <div class="scanText" id="trueTitle">这是一段标题这是一段标题这是一段标题这是一段标题</div>
+        </div>
+    </div>
+</div>
+
+<div class="maintain">
+    <img src="camera.png" style="height: 49px;width: auto" class="camera">
+    <div class="info">
+    <input type="file" name="files" id="fileTog" accept="image/*" multiple="multiple" onchange="changImg(event)">
+    </div>
+    <div class="title" contenteditable="true" id="title" onmouseout="changeTitle()">点击输入标题</div>
+    <div class="subtitle" contenteditable="true" id="subtitle">点击输入副标题</div>
+</div>
+
+<div class="passage">
+    <div class="writer">撰写：邵励治</div>
+    <div class="time">2018年18月17日11:20:23</div>
+    <div class="hint" id="hint">点击输入正文</div>
+    <div class="bigText" contenteditable="true" id="bigtext">
+    </div>
+</div>
+<div class="select">
+    <div class="texttitle">文本编辑选项</div>
+    <div id="selector">
+    <span class="btn1"><input type="button" value="标题一" data-command='fontSize' data-value="7" onclick="changeStyle(this.dataset)"></span>
+    <span class="btn2"><input type="button" value="标题二" data-command='bold' onclick="changeStyle(this.dataset)" ></span>
+    <span class="btn3"><input type="button" value="正文" data-command='fontSize' data-value="6" onclick="changeStyle(this.dataset)"></span>
+    </div>
+    <div class="choice">向文中插入多媒体选项</div>
+    <span class="img">插入图片</span>
+    <span class="vid">插入视频</span>
+</div>
+</div>
+</body>
+</html>
