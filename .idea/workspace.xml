@@ -6,21 +6,7 @@
     <bookmark url="file://$PROJECT_DIR$/try/JS练习/json/json的转化.html" line="12" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5bd1e269-9efd-4ff3-9c66-f8b218f491db" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/try/cms 1/cms.css" afterPath="$PROJECT_DIR$/try/cms 1/cms.css" />
-      <change beforePath="$PROJECT_DIR$/try/cms 1/cms.html" afterPath="$PROJECT_DIR$/try/cms 1/cms.html" />
-      <change beforePath="$PROJECT_DIR$/try/cms2/back.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/try/cms2/cms.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/try/cms2/explore.css" afterPath="$PROJECT_DIR$/try/cms2/explore.css" />
-      <change beforePath="$PROJECT_DIR$/try/cms2/explore.html" afterPath="$PROJECT_DIR$/try/cms2/explore.html" />
-      <change beforePath="$PROJECT_DIR$/try/cms2/login.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/try/css文件/1.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/try/测试/test.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/try/测试/text.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/try/第四个项目/login.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/try/第四个项目/login.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/try/第四个项目/login.js" afterPath="" />
-    </list>
+    <list default="true" id="5bd1e269-9efd-4ff3-9c66-f8b218f491db" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -102,7 +88,7 @@
           <file leaf-file-name="editor.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/try/newseditor/editor.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="789">
+                <state relative-caret-position="633">
                   <caret line="225" column="4" lean-forward="false" selection-start-line="225" selection-start-column="4" selection-end-line="225" selection-end-column="4" />
                   <folding />
                 </state>
@@ -492,7 +478,7 @@
       <workItem from="1534406395958" duration="4505000" />
       <workItem from="1534680810380" duration="8764000" />
       <workItem from="1534765068754" duration="8946000" />
-      <workItem from="1534853663669" duration="3216000" />
+      <workItem from="1534853663669" duration="3223000" />
     </task>
     <task id="LOCAL-00001" summary="s">
       <created>1531819172632</created>
@@ -505,13 +491,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="434903000" />
+    <option name="totallyTimeSpent" value="434910000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14322917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14322917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32821077" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
