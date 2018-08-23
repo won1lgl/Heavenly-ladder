@@ -12,6 +12,11 @@
 
         function changImg(e){
             var myImg = document.getElementById('myImg');
+            var youImg=document.getElementById('titlePicture');
+            var cover=document.getElementById('imgCover');
+            var title=document.getElementById('title');
+            var scanNew=document.getElementById('scanNew');
+            var info=document.getElementById('info');
             for (var i = 0; i < e.target.files.length; i++) {
                 var file = e.target.files[i];
                 console.log(file);
@@ -24,6 +29,11 @@
                 freader.onload = function(e) {
                     console.log(e);
                     myImg.setAttribute('src', e.target.result);
+                    youImg.setAttribute('src',e.target.result);
+                    cover.style.display="block";
+                    title.style.color="white";
+                    scanNew.style.display="block";
+                    info.style.display="none"
                 }
             }
         }
@@ -97,13 +107,6 @@
             bigText.onclick=function () {
                 Hint.innerText="";
             };
-
-            save.onclick=function () {
-                changeTitle();
-                var show=document.getElementById('scanNew');
-                show.style.display="block"
-            }
-
         }
     </script>
 </head>
@@ -122,17 +125,20 @@
     <div class="imgscan">
         <div class="scanNews" id="scanNew">
         <img alt="" src="" width="152px" height="152px" id="myImg">
-            <div class="scanText" id="trueTitle">这是一段标题这是一段标题这是一段标题这是一段标题</div>
+            <div class="scanText" id="trueTitle"></div>
+            <img src="readed.png" width="30px" height="30px" class="icon2">
+            <img src="time.png" width="27px" height="27px" class="icon1">
         </div>
     </div>
 </div>
 
 <div class="maintain">
     <img src="camera.png" style="height: 49px;width: auto" class="camera">
-    <div class="info">
-    <input type="file" name="files" id="fileTog" accept="image/*" multiple="multiple" onchange="changImg(event)">
-    </div>
-    <div class="title" contenteditable="true" id="title" onmouseout="changeTitle()">点击输入标题</div>
+    <div class="info" id="info">点击上传图片</div>
+    <input type="file" name="files" id="fileTog" accept="image/*" multiple="multiple" onchange="changImg(event)" class="addPicture">
+    <img src="" id="titlePicture" width="830px" height="492px" alt="">
+    <img src="mask.png" class="cover" width="830px" height="492px" id="imgCover">
+    <div class="title" contenteditable="true" id="title" oninput="changeTitle()">点击输入标题</div>
     <div class="subtitle" contenteditable="true" id="subtitle">点击输入副标题</div>
 </div>
 
@@ -152,7 +158,7 @@
     </div>
     <div class="choice">向文中插入多媒体选项</div>
     <span class="img">插入图片</span>
-    <span class="vid">插入个屁</span>
+    <span class="vid">插入视频</span>
 </div>
 </div>
 </body>

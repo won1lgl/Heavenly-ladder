@@ -101,6 +101,13 @@ body{
 
 }
 
+.cover{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: none;
+}
+
 .camera{
     height: 49px;
     width: auto;
@@ -121,6 +128,7 @@ body{
     position: absolute;
     top: 289px;
     left: 334px;
+    z-index: 1;
 }
 
 .title{
@@ -137,6 +145,7 @@ body{
     font-size: 35px;
     font-weight: bold;
     cursor: pointer;
+    z-index: 2;
 }
 
 .subtitle{
@@ -150,6 +159,7 @@ body{
     top: 416px;
     font-size: 29px;
     cursor: pointer;
+    z-index: 2;
 }
 
 .passage{
@@ -238,6 +248,38 @@ body{
     width: 452px;
     height: 152px;
     display: none;
+}
+
+.icon1{
+    position: absolute;
+    left: 182px;
+    top: 110px;
+}
+
+.icon2{
+    position: absolute;
+    top: 110px;
+    right: 70px;
+}
+
+.addPicture{
+    border: red 2px solid;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 830px;
+    height: 492px;
+    opacity: 0;
+    z-index: 1;
+}
+
+.titlePicture{
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 830px;
+    height: 492px;
 }
 
 .scanText{

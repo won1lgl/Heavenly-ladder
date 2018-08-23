@@ -5,22 +5,38 @@
     <title>Document</title>
     <style>
         img{
-            /*border: red solid 2px;*/
-            display: inline-block;
-            position: absolute;
-            top: 150px;
-            left: 300px;
+            border: red solid 2px;
+            display: block;
+        }
+
+        .div1{
+            height: 250px;
+            width: 250px;
+            border: 2px red solid;
+            background-size: 100% 100%;
+            background-repeat: no-repeat ;
+        }
+
+        .btn{
+            opacity: 0.4;
+            outline: 2px red solid;
+            width: 400px;
+            height: 400px;
         }
     </style>
 </head>
 <body>
 <form action="">
-    <input type="file" name="files" id="fileTog" accept="image/*" multiple="multiple" onchange="changImg(event)">
-    <img alt="" id="myImg" src="" height=400px width=800px>
+    <input type="file" name="files" id="fileTog" accept="image/*" multiple="multiple" onchange="changImg(event)" class="btn">
+    <div class="div1" id="div1"></div>
+    <img alt="" id="myImg" src="" height=400px width=800px >
+    <img src="" height="800px" width="1600px"  id="youImg">
 </form>
 <script>
     function changImg(e){
         var myImg = document.getElementById('myImg');
+        var youImg=document.getElementById('youImg');
+        var div1=document.getElementById('div1');
         for (var i = 0; i < e.target.files.length; i++) {
             var file = e.target.files[i];
             console.log(file);
@@ -33,6 +49,8 @@
             freader.onload = function(e) {
                 console.log(e);
                 myImg.setAttribute('src', e.target.result);
+                youImg.src=e.target.result;
+                div1.style.background.url=e.target.result
             }
         }
     }
