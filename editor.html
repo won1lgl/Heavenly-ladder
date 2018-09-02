@@ -28,10 +28,6 @@
                     HeadImage.setAttribute('src', e.target.result);
                     WorkImage.setAttribute('src',e.target.result);
                     crop.style.display='flex';
-                    window.primitiveLength = {
-                        width: HeadImage.offsetWidth,
-                        height: HeadImage.offsetHeight
-                    };
                 }
             }
         }
@@ -46,6 +42,23 @@
             var flamewidth=parseInt(window.screen.width);
             flamewidth /= 1920;
             document.body.style.zoom=flamewidth;
+        }
+
+        function imageChanged(){
+            var HeadImage=document.querySelector('#HeadImage');
+            var WorkImage=document.querySelector('#WorkImage');
+            HeadImage.style.width = 'auto';
+            HeadImage.style.height = 'auto';
+            HeadImage.style.top = 'auto';
+            HeadImage.style.left = 'auto';
+            WorkImage.style.width = 'auto';
+            WorkImage.style.height = 'auto';
+            WorkImage.style.top = 'auto';
+            WorkImage.style.left = 'auto';
+            window.primitiveLength = {
+                width: HeadImage.offsetWidth,
+                height: HeadImage.offsetHeight
+            };
         }
 
         function sizeUp(e) {
@@ -79,6 +92,8 @@
         function startDrag(e,flag) {
             e.preventDefault();
             if (!document.querySelector('#HeadImage').src) return;
+            var HeadArea = document.querySelector('#HeadArea');
+            var WorkArea = document.querySelector('#WorkArea');
             // 记录鼠标初始位置
             window.mouseStartX = e.clientX;
             window.mouseStartY = e.clientY;
@@ -105,6 +120,8 @@
         }
 
         function clearDragEvent() {
+            var HeadArea = document.querySelector('#HeadArea');
+            var WorkArea = document.querySelector('#WorkArea');
             HeadArea.removeEventListener('mousemove', window.dragging, false);
             HeadArea.removeEventListener('mouseup', window.clearDragEvent, false);
             WorkArea.removeEventListener('mousemove', window.dragging, false);
@@ -134,15 +151,15 @@
         }
 
         function getImage(primitiveImage,tailorImage,width,height) {
-            let cropCanvas = document.createElement('canvas');
-            let sideX = (width / primitiveImage.offsetWidth) * primitiveLength.width;
-            let sideY = (height / primitiveImage.offsetHeight) * primitiveLength.height;
+            var cropCanvas = document.createElement('canvas');
+            var sideX = (width / primitiveImage.offsetWidth) * primitiveLength.width;
+            var sideY = (height / primitiveImage.offsetHeight) * primitiveLength.height;
             cropCanvas.width = sideX;
             cropCanvas.height = sideY;
-            let sy = (50 - primitiveImage.offsetTop) / primitiveImage.offsetHeight * primitiveLength.height;
-            let sx = (50 - primitiveImage.offsetLeft) / primitiveImage.offsetWidth * primitiveLength.width;
+            var sy = (50 - primitiveImage.offsetTop) / primitiveImage.offsetHeight * primitiveLength.height;
+            var sx = (50 - primitiveImage.offsetLeft) / primitiveImage.offsetWidth * primitiveLength.width;
             cropCanvas.getContext('2d').drawImage(primitiveImage, sx, sy, sideX, sideY, 0, 0, sideX, sideY);
-            let lastImageData = cropCanvas.toDataURL();
+            var lastImageData = cropCanvas.toDataURL();
             tailorImage.setAttribute('src',lastImageData);
         }
 
@@ -244,7 +261,7 @@
             <div id="HeadArea" onmousedown="startDrag(event,true)">
                 <div id="HeadOverlay">
                     <div id="HeadInner"></div>
-                    <img id="HeadImage">
+                    <img id="HeadImage" onload="imageChanged()">
                 </div>
             </div>
             <div class="btnBox">
@@ -256,7 +273,7 @@
             <div id="WorkArea" onmousedown="startDrag(event,false)">
                 <div id="WorkOverlay">
                     <div id="WorkInner"></div>
-                    <img id="WorkImage">
+                    <img id="WorkImage" onload="imageChanged()">
                 </div>
             </div>
             <div class="btnBox">
