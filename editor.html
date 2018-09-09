@@ -5,14 +5,16 @@
     <title>Title</title>
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href= editor.css>
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
     <script>
         const changeStyle = (data) => {
             data.value? document.execCommand(data.command, false, data.value):document.execCommand(data.command, false, null)
         }
-
         function changImg(e){
             var crop=document.getElementById('crop');
-            var HeadImage=document.querySelector('#HeadImage');
             var WorkImage=document.querySelector('#WorkImage');
             for (var i = 0; i < e.target.files.length; i++) {
                 var file = e.target.files[i];
@@ -25,92 +27,58 @@
                 freader.readAsDataURL(file);
                 freader.onload = function(e) {
                     console.log(e);
-                    HeadImage.setAttribute('src', e.target.result);
                     WorkImage.setAttribute('src',e.target.result);
                     crop.style.display='flex';
                 }
             }
+            document.getElementById("fileTog").value = '';
         }
-
         function changeTitle() {
             var text=document.getElementById('trueTitle');
             var word=document.getElementById('title');
             text.innerText=word.innerText
         }
-
         function changeScaling() {
             var flamewidth=parseInt(window.screen.width);
             flamewidth /= 1920;
             document.body.style.zoom=flamewidth;
         }
-
         function imageChanged(){
-            var HeadImage=document.querySelector('#HeadImage');
             var WorkImage=document.querySelector('#WorkImage');
-            HeadImage.style.width = 'auto';
-            HeadImage.style.height = 'auto';
-            HeadImage.style.top = 'auto';
-            HeadImage.style.left = 'auto';
             WorkImage.style.width = 'auto';
             WorkImage.style.height = 'auto';
             WorkImage.style.top = 'auto';
             WorkImage.style.left = 'auto';
             window.primitiveLength = {
-                width: HeadImage.offsetWidth,
-                height: HeadImage.offsetHeight
+                width: WorkImage.offsetWidth,
+                height: WorkImage.offsetHeight
             };
         }
-
-        function sizeUp(e) {
-            var Img;
-            if (e)
-            {
-                Img = document.querySelector('#HeadImage');
-            }
-            else {
-                Img = document.querySelector('#WorkImage');
-            }
-
+        function sizeUp() {
+            var Img = document.querySelector('#WorkImage');
             Img.style.width = 1.1*Img.offsetWidth + 'px';
             Img.style.height = 1.1*Img.offsetHeight + 'px';
         }
 
-        function sizeDown(e) {
-            var Img;
-            if (e)
-            {
-                Img = document.querySelector('#HeadImage');
-            }
-            else {
-                Img = document.querySelector('#WorkImage');
-            }
-
+        function sizeDown() {
+            var Img = document.querySelector('#WorkImage');
             Img.style.width = 0.9*Img.offsetWidth + 'px';
             Img.style.height = 0.9*Img.offsetHeight + 'px';
         }
-
-        function startDrag(e,flag) {
+        function startDrag(e) {
             e.preventDefault();
-            if (!document.querySelector('#HeadImage').src) return;
-            var HeadArea = document.querySelector('#HeadArea');
+            if (!document.querySelector('#WorkImage').src) return;
             var WorkArea = document.querySelector('#WorkArea');
             // 记录鼠标初始位置
             window.mouseStartX = e.clientX;
             window.mouseStartY = e.clientY;
             // 添加鼠标移动以及鼠标点击松开事件监听
-            if(flag){
-                window.Img = document.querySelector('#HeadImage');;
-                HeadArea.addEventListener('mousemove', dragging, false);
-                HeadArea.addEventListener('mouseup', clearDragEvent, false);
-            }
-            else {
-                window.Img = document.querySelector('#WorkImage');
-                WorkArea.addEventListener('mousemove', dragging, false);
-                WorkArea.addEventListener('mouseup', clearDragEvent, false);
-            }
+            WorkArea.addEventListener('mousemove', dragging, false);
+            WorkArea.addEventListener('mouseup', clearDragEvent, false);
         }
 
         function dragging(e) {
+            var Img = document.querySelector('#WorkImage');
             var moveX = Img.offsetLeft + e.clientX - mouseStartX;
             Img.style.left = moveX + 'px';
             mouseStartX = e.clientX;
@@ -118,19 +86,13 @@
             Img.style.top = moveY + 'px';
             mouseStartY = e.clientY;
         }
-
         function clearDragEvent() {
-            var HeadArea = document.querySelector('#HeadArea');
             var WorkArea = document.querySelector('#WorkArea');
-            HeadArea.removeEventListener('mousemove', window.dragging, false);
-            HeadArea.removeEventListener('mouseup', window.clearDragEvent, false);
             WorkArea.removeEventListener('mousemove', window.dragging, false);
             WorkArea.removeEventListener('mouseup', window.clearDragEvent, false);
         }
-
         function cropImage() {
-            if (!document.querySelector('#HeadImage').src) return;
-
+            if (!document.querySelector('#WorkImage').src) return;
             var myImg = document.getElementById('myImg');
             var youImg=document.getElementById('titlePicture');
             var cover=document.getElementById('imgCover');
@@ -138,31 +100,77 @@
             var scanNew=document.getElementById('scanNew');
             var info=document.getElementById('info');
             var crop=document.getElementById('crop');
-            var HeadImage=document.querySelector('#HeadImage');
             var WorkImage=document.querySelector('#WorkImage');
 
-            getImage(HeadImage,myImg,157,152);
-            getImage(WorkImage,youImg,803,492);
+            var cropCanvas = document.createElement('canvas');
+            var sideX = (800 / WorkImage.offsetWidth) * primitiveLength.width;
+            var sideY = (450 / WorkImage.offsetHeight) * primitiveLength.height;
+            cropCanvas.width = sideX;
+            cropCanvas.height = sideY;
+            var sy = (50 - WorkImage.offsetTop) / WorkImage.offsetHeight * primitiveLength.height;
+            var sx = (50 - WorkImage.offsetLeft) / WorkImage.offsetWidth * primitiveLength.width;
+            cropCanvas.getContext('2d').drawImage(WorkImage, sx, sy, sideX, sideY, 0, 0, sideX, sideY);
+            var lastImageData = cropCanvas.toDataURL();
+            youImg.setAttribute('src',lastImageData);
+            myImg.setAttribute('src',lastImageData);
+            myImg.style.width='157px';
+            myImg.style.height='152px';
             cover.style.display="block";
             title.style.color="white";
             scanNew.style.display="block";
             info.style.display="none";
             crop.style.display='none';
         }
-
-        function getImage(primitiveImage,tailorImage,width,height) {
-            var cropCanvas = document.createElement('canvas');
-            var sideX = (width / primitiveImage.offsetWidth) * primitiveLength.width;
-            var sideY = (height / primitiveImage.offsetHeight) * primitiveLength.height;
-            cropCanvas.width = sideX;
-            cropCanvas.height = sideY;
-            var sy = (50 - primitiveImage.offsetTop) / primitiveImage.offsetHeight * primitiveLength.height;
-            var sx = (50 - primitiveImage.offsetLeft) / primitiveImage.offsetWidth * primitiveLength.width;
-            cropCanvas.getContext('2d').drawImage(primitiveImage, sx, sy, sideX, sideY, 0, 0, sideX, sideY);
-            var lastImageData = cropCanvas.toDataURL();
-            tailorImage.setAttribute('src',lastImageData);
+        function insertImg(e) {
+            var nodeImg = document.createElement('img');
+            var bigtext = document.getElementById('bigtext');
+            bigtext.appendChild(nodeImg);
+            bigtext.appendChild(document.createElement('br'));
+            nodeImg.style.display='block';
+            nodeImg.style.maxWidth='100%';
+            nodeImg.style.height='auto';
+            nodeImg.style.margin='auto';
+            for (var i = 0; i < e.target.files.length; i++) {
+                var file = e.target.files[i];
+                console.log(file);
+                if (!(/^image\/.*$/i.test(file.type))) {
+                    continue; //不是图片 就跳出这一次循环
+                }
+                var freader = new FileReader();
+                freader.readAsDataURL(file);
+                freader.onload = function (e) {
+                    nodeImg.setAttribute('src',e.target.result);
+                }
+            }
+            document.getElementById("insertImg").value = '';
+            textFocus(nodeImg);
         }
 
+        function  textFocus(node) {
+            var bigtext = document.getElementById('bigtext');
+            bigtext.focus();
+            var sel = getSelection();
+            if (window.getSelection) {
+                sel = window.getSelection();
+                sel.removeAllRanges();
+                let range = document.createRange();
+                range.setStartAfter(node);
+                range.setEndAfter(node);
+                sel.addRange(range);
+            }
+        }
+        function Bigword() {
+            document.execCommand('fontName',false,"fontnameRegular");
+            document.execCommand('fontSize',false,"7")
+        }
+        function Middleword() {
+            document.execCommand('fontName',false,"fontnameRegular");
+            document.execCommand('fontSize',false,"6")
+        }
+        function Smallword() {
+            document.execCommand('fontName',false,"Arial");
+            document.execCommand('fontSize',false,"6")
+        }
         window.onload=function () {
             var header="false";
             var userId="1419809281";
@@ -175,7 +183,34 @@
             var Hint=document.getElementById('hint');
             var bigText=document.getElementById('bigtext');
             var save=document.getElementById('btn2');
+            var btnv=document.getElementById('video');
+            var video=document.getElementById('video0');
+            var hint=document.getElementById('hint');
             changeScaling();
+            btnv.onchange=function () {
+                bigText.style.top = "550px";
+                video.style.display="block";
+                hint.style.top="550px"
+            };
+            $("#video").change(function () {
+                var objUrl = getObjectURL(this.files[0]);
+                console.log("objUrl = " + objUrl);
+                if (objUrl) {
+                    $("#video0").attr("src", objUrl);
+                }
+            });
+            //建立一个可存取到该file的url
+            function getObjectURL(file) {
+                var url = null;
+                if (window.createObjectURL != undefined) { // basic
+                    url = window.createObjectURL(file);
+                } else if (window.URL != undefined) { // mozilla(firefox)
+                    url = window.URL.createObjectURL(file);
+                } else if (window.webkitURL != undefined) { // webkit or chrome
+                    url = window.webkitURL.createObjectURL(file);
+                }
+                return url;
+            }
             Public.onclick=function () {
                 if(Public.innerText=="正式发布"){
                     Public.innerText="下架";
@@ -205,7 +240,6 @@
             bk.onclick=function () {
                 window.location.href="login.html"
             };
-
             Title.onclick=function () {
                 if(Title.innerText=="点击输入标题"){
                     Title.innerText=""
@@ -214,7 +248,6 @@
                     SubTitle.innerText="点击输入副标题"
                 }
             };
-
             SubTitle.onclick=function () {
                 if (SubTitle.innerText=="点击输入副标题") {
                     SubTitle.innerText = "";
@@ -223,7 +256,6 @@
                     Title.innerText = "点击输入标题"
                 }
             };
-
             bigText.onclick=function () {
                 Hint.innerText="";
             };
@@ -240,79 +272,69 @@
 </div>
 
 <div class="contain">
-<div class="scan">
-    <div class="scantitle">首页效果图</div>
-    <div class="imgscan">
-        <div class="scanNews" id="scanNew">
-        <img alt="" src="" width="157px" height="152px" id="myImg">
-            <div class="scanText" id="trueTitle"></div>
-            <img src="readed.png" width="27px" height="27px" class="icon2">
-            <div class="info1">15分钟前</div>
-            <img src="time.png" width="24px" height="24px" class="icon1">
-            <div class="info2">1092</div>
+    <div class="scan">
+        <div class="scantitle">首页效果图</div>
+        <div class="imgscan">
+            <div class="scanNews" id="scanNew">
+                <img alt="" src="" width="157px" height="152px" id="myImg">
+                <div class="scanText" id="trueTitle"></div>
+                <img src="readed.png" width="27px" height="27px" class="icon2">
+                <div class="info1">15分钟前</div>
+                <img src="time.png" width="24px" height="24px" class="icon1">
+                <div class="info2">1092</div>
+            </div>
         </div>
     </div>
-</div>
 
 
-<div id="crop">
-    <div style="display: flex;justify-content: center;align-items: center;">
+    <div id="crop">
+        <span>请裁剪标题图片</span>
         <div class="cropBox">
-            <div id="HeadArea" onmousedown="startDrag(event,true)">
-                <div id="HeadOverlay">
-                    <div id="HeadInner"></div>
-                    <img id="HeadImage" onload="imageChanged()">
-                </div>
-            </div>
-            <div class="btnBox">
-                <button class="btn" onclick="sizeUp(true)">放大</button>
-                <button class="btn" onclick="sizeDown(true)">缩小</button>
-            </div>
-        </div>
-        <div class="cropBox">
-            <div id="WorkArea" onmousedown="startDrag(event,false)">
+            <div id="WorkArea" onmousedown="startDrag(event)">
                 <div id="WorkOverlay">
                     <div id="WorkInner"></div>
                     <img id="WorkImage" onload="imageChanged()">
                 </div>
             </div>
             <div class="btnBox">
-                <button class="btn" onclick="sizeUp(false)">放大</button>
-                <button class="btn" onclick="sizeDown(false)">缩小</button>
+                <button class="btn" onclick="sizeUp()">放大</button>
+                <button class="btn" onclick="sizeDown()">缩小</button>
             </div>
         </div>
+        <button class="btn" onclick="cropImage()">确定</button>
     </div>
-    <button class="btn" onclick="cropImage()">确定</button>
-</div>
 
-<div class="maintain">
-    <img src="camera.png" style="height: 49px;width: auto" class="camera">
-    <div class="info" id="info">点击上传图片</div>
-    <input type="file" name="files" id="fileTog" accept="image/*" multiple="multiple" onchange="changImg(event)" class="addPicture">
-    <img src="" id="titlePicture" width="830px" height="492px" alt="">
-    <img src="mask.png" class="cover" width="830px" height="492px" id="imgCover">
-    <div class="title" contenteditable="true" id="title" oninput="changeTitle()">点击输入标题</div>
-    <div class="subtitle" contenteditable="true" id="subtitle">点击输入副标题</div>
-</div>
+    <div class="maintain">
+        <img src="camera.png" style="height: 49px;width: auto" class="camera">
+        <div class="info" id="info">点击上传图片</div>
+        <input type="file" name="files" id="fileTog" accept="image/*" multiple="multiple" onchange="changImg(event)" class="addPicture">
+        <img src="" id="titlePicture" width="830px" height="492px" alt="">
+        <img src="mask.png" class="cover" width="830px" height="492px" id="imgCover">
+        <div class="title" contenteditable="true" id="title" oninput="changeTitle()">点击输入标题</div>
+        <div class="subtitle" contenteditable="true" id="subtitle">点击输入副标题</div>
+    </div>
 
-<div class="passage">
-    <div class="writer">撰写：邵励治</div>
-    <div class="time">2018年18月17日11:20:23</div>
-    <div class="hint" id="hint">点击输入正文</div>
-    <div class="bigText" contenteditable="true" id="bigtext">
+    <div class="passage">
+        <div class="writer">撰写：邵励治</div>
+        <div class="time">2018年18月17日11:20:23</div>
+        <video style="height:auto;" src="" id="video0" controls="controls" class="video"></video>
+        <div class="hint" id="hint">点击输入正文</div>
+        <div class="bigText" contenteditable="true" id="bigtext">
+        </div>
     </div>
-</div>
-<div class="select">
-    <div class="texttitle">文本编辑选项</div>
-    <div id="selector">
-    <span class="btn1"><input type="button" value="标题一" data-command='fontSize' data-value="7" onclick="changeStyle(this.dataset)"></span>
-    <span class="btn2"><input type="button" value="标题二" data-command='bold' onclick="changeStyle(this.dataset)" ></span>
-    <span class="btn3"><input type="button" value="正文" data-command='fontSize' data-value="6" onclick="changeStyle(this.dataset)"></span>
+    <div class="select">
+        <div class="texttitle">文本编辑选项</div>
+        <div id="selector">
+            <span class="btn1"><input type="button" value="标题一" onclick="Bigword()"></span>
+            <span class="btn2"><input type="button" value="标题二" onclick="Middleword()" ></span>
+            <span class="btn3"><input type="button" value="正文" onclick="Smallword()"></span>
+        </div>
+        <div class="choice">向文中插入多媒体选项</div>
+        <input type="file" accept="image/*" id="insertImg" onchange="insertImg(event)" hidden>
+        <label for="insertImg"  class="img">插入图片</label>
+        <input class="form-control" type="file" id="video" name="video" onchange="changeVideo()"/>
+        <label for="video" class="vid">插入视频</label>
     </div>
-    <div class="choice">向文中插入多媒体选项</div>
-    <span class="img">插入图片</span>
-    <span class="vid">插入视频</span>
-</div>
 </div>
 </body>
 </html>
